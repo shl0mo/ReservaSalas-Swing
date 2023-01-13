@@ -2,6 +2,7 @@ package reserva;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*;
 
 public class Login extends JFrame {
 	private JFrame frame;
@@ -49,16 +50,22 @@ public class Login extends JFrame {
 		
 		getFrame().add(container_botao);
 		
-		JButton botao = new JButton("Logar");
-		botao.setBounds(0, 0, 130, 40);
-		container_botao.add(botao, BorderLayout.CENTER);
+		JButton botao_logar = new JButton("Logar");
+		botao_logar.setBounds(0, 0, 130, 40);
+		container_botao.add(botao_logar, BorderLayout.CENTER);
 		panel.setVisible(true);
 		
-		
 		this.frame.add(panel);
+		
+		botao_logar.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				JOptionPane.showMessageDialog(null, campo_senha.getText());
+			}
+		});
 	}
 	
 	public JFrame getFrame () {
 		return this.frame;
 	}
+	
 }
