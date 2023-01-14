@@ -3,8 +3,6 @@ package reserva;
 import java.sql.*;
 
 public final class ConectarBD {
-    public static Connection conn;
-       
     public static Connection conecta () {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
@@ -14,6 +12,7 @@ public final class ConectarBD {
             Class.forName(driver);
             Connection conn = DriverManager.getConnection(url, username, password);
             System.out.println("Conectado ao banco de dados");
+            Globais.conn = conn;
             return conn;
         } catch (Exception e) {
             System.out.println(e);

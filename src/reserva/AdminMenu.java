@@ -16,13 +16,14 @@ public class AdminMenu extends JFrame {
 		final int altura_janela = 400;
 		
 		this.frame = new JFrame("Menu");
-		getFrame().setLayout(new GridLayout(2, 1));
+		getFrame().setLayout(null);
 		getFrame().setSize(largura_janela, altura_janela);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Titulo.adicionaTitulo(getFrame());
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new GridLayout(5, 1, 0, 10));
+		panel.setBounds(0, 80, largura_janela, 250);
 		panel.setBorder(BorderFactory.createEmptyBorder(0, 70, 0, 70));
 		getFrame().add(panel);
 		

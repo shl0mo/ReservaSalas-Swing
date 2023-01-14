@@ -24,7 +24,6 @@ public class Login extends JFrame {
 		JTextField campo_usuario = TextField.ConstroiTextField("Usuário", container_campos);
 		JPasswordField campo_senha = PasswordField.ConstroiPasswordField("Senha", container_campos);
 		
-		
 		JButton botao_logar = Botao.ConstroiBotao("Login", 180, largura_janela, altura_janela, frame);
 		
 		container_campos.setVisible(true);
