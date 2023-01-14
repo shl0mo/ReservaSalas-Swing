@@ -3,6 +3,8 @@ package reserva;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.io.*;
+import java.sql.*;
 
 public class Login extends JFrame {
 	private JFrame frame;
@@ -32,11 +34,13 @@ public class Login extends JFrame {
 		
 		botao_logar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				if (campo_usuario.getText().equals("") || campo_senha.getText().equals("")) {
+				String usuario = campo_usuario.getText();
+				String senha = campo_senha.getText();  
+				if (usuario.equals("") || senha.equals("")) {
 					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
 					return;
 				}
-				if (campo_usuario.getText().equals("admin") && campo_senha.getText().equals("admin")) {
+				if (usuario.equals("admin") && senha.equals("admin")) {
 					if (Globais.admin_main == null) {
 						Globais.admin_main  = new AdminMenu();
 						getFrame().setVisible(false);
@@ -46,7 +50,19 @@ public class Login extends JFrame {
 						Globais.admin_main.getFrame().setVisible(true);
 					}
 				} else {
-					
+					try {
+						Statement statement = Globais.conn.createStatement();
+						ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario + "'" + " AND senha = '" + senha + "';");
+						int numero_linhas = 0;
+						while (resultado.next()) numero_linhas++;
+						if (numero_linhas == 0) {
+							JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
+							return;
+						}
+						JOptionPane.showMessageDialog(null, "Redirecionando...");
+					} catch (Exception ioe) {
+						ioe.printStackTrace();
+					}
 				}
 			}
 		});
