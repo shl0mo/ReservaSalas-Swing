@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import java.sql.*;
 
+import reserva.CadastroSala;
 
 public class AdminMenu extends JFrame {
 	private JFrame frame;
@@ -64,6 +65,18 @@ public class AdminMenu extends JFrame {
 					Globais.exclusao_usuario.getFrame().setVisible(true);	
 				} else {
 					Globais.exclusao_usuario.getFrame().setVisible(true);
+				}
+			}
+		});
+		
+		botao_cadastrar_sala.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				if (Globais.cadastro_sala == null) {
+					Globais.cadastro_sala = new CadastroSala();
+					Globais.cadastro_sala.getFrame().setVisible(true);
+				} else {
+					Globais.cadastro_sala.getFrame().setVisible(true);
 				}
 			}
 		});
