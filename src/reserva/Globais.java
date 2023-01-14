@@ -9,6 +9,7 @@ public class Globais {
 	public static CadastroUsuario cadastro_usuario = null;
 	public static ExclusaoUsuario exclusao_usuario = null;
 	public static CadastroSala cadastro_sala = null;
+	public static ExclusaoSala exclusao_sala = null;
 	public static int id_usuario = 0;
 	public static String nome_usuario = "";
 }

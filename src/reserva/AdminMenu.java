@@ -72,12 +72,16 @@ public class AdminMenu extends JFrame {
 		botao_cadastrar_sala.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				getFrame().setVisible(false);
-				if (Globais.cadastro_sala == null) {
-					Globais.cadastro_sala = new CadastroSala();
-					Globais.cadastro_sala.getFrame().setVisible(true);
-				} else {
-					Globais.cadastro_sala.getFrame().setVisible(true);
-				}
+				Globais.cadastro_sala = new CadastroSala();
+				Globais.cadastro_sala.getFrame().setVisible(true);
+			}
+		});
+		
+		botao_excluir_sala.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.exclusao_sala = new ExclusaoSala();
+				Globais.exclusao_sala.getFrame().setVisible(true);
 			}
 		});
 	}
