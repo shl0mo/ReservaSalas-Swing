@@ -1,6 +1,9 @@
 package reserva;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 
 import reserva.TextField;
@@ -32,6 +35,13 @@ public class ExclusaoUsuario {
 		
 		JButton botao_excluir = Botao.ConstroiBotao("Excluir", 145, largura_janela, altura_janela, getFrame());
 		JButton botao_voltar = Botao.ConstroiBotao("Voltar", 195, largura_janela, altura_janela, getFrame());
+		
+		botao_voltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.admin_main.getFrame().setVisible(true);
+			}
+		});
 	}
 	
 	public JFrame getFrame () {
