@@ -44,6 +44,10 @@ public class CadastroSala extends JFrame {
 				String bloco = bloco_sala.getText();
 				String andar = andar_sala.getText();
 				String tipo = (String)tipo_sala.getSelectedItem();
+				if (numero.equals("") || bloco.equals("") || andar.equals("") || tipo.equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+					return;
+				}
 				try {
 					Statement statement = Globais.conn.createStatement();
 					ResultSet resultado = statement.executeQuery("SELECT * FROM salas WHERE numero = '" + numero + "' AND bloco = '" + bloco + "' AND andar = '" + andar + "';");
