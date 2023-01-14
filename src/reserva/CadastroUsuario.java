@@ -14,7 +14,7 @@ public class CadastroUsuario {
 	
 	public CadastroUsuario () {
 		final int largura_janela = 400;
-		final int altura_janela = 500;
+		final int altura_janela = 550;
 		
 		this.frame = new JFrame("Cadastro de usuário");
 		getFrame().setLayout(null);
@@ -37,6 +37,7 @@ public class CadastroUsuario {
 		JComboBox campo_tipo = ComboBox.ConstroiComboBox("Tipo", opcoes, container_campos);
 		
 		JButton botao_cadastrar = Botao.ConstroiBotao("Cadastrar", 370, largura_janela, altura_janela, getFrame());
+		JButton botao_voltar = Botao.ConstroiBotao("Voltar", 430, largura_janela, altura_janela, getFrame());
 		
 		
 		botao_cadastrar.addActionListener(new ActionListener() {
