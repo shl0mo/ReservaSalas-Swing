@@ -15,7 +15,7 @@ public class Login extends JFrame {
 		getFrame().setLayout(null);
 		getFrame().setSize(largura_janela, altura_janela);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Titulo.adicionaTitulo(getFrame());
+		Titulo.adicionaTitulo("Sistema de Reserva de Salas do IComp", getFrame());
 		
 		JPanel container_campos = new JPanel();
 		container_campos.setLayout(new GridLayout(2, 1, 0, 10));

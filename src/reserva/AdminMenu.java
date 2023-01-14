@@ -19,19 +19,19 @@ public class AdminMenu extends JFrame {
 		getFrame().setLayout(null);
 		getFrame().setSize(largura_janela, altura_janela);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Titulo.adicionaTitulo(getFrame());
+		Titulo.adicionaTitulo("Menu do Administrador", getFrame());
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(5, 1, 0, 10));
-		panel.setBounds(0, 80, largura_janela, 250);
-		panel.setBorder(BorderFactory.createEmptyBorder(0, 70, 0, 70));
-		getFrame().add(panel);
+		JPanel container_campos = new JPanel();
+		container_campos.setLayout(new GridLayout(5, 1, 0, 10));
+		container_campos.setBounds(0, 80, largura_janela, 250);
+		container_campos.setBorder(BorderFactory.createEmptyBorder(0, 70, 0, 70));
+		getFrame().add(container_campos);
 		
-		JButton botao_cadastrar_usuario = Botao.ConstroiBotao ("Cadastrar Usuário", 0, largura_janela, altura_janela, panel);
-		JButton botao_excluir_usuario = Botao.ConstroiBotao ("Excluir Usuário", 0, largura_janela, altura_janela, panel);
-		JButton botao_cadastrar_sala = Botao.ConstroiBotao ("Cadastrar Sala", 0, largura_janela, altura_janela, panel);
-		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, panel);
-		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, panel);
+		JButton botao_cadastrar_usuario = Botao.ConstroiBotao ("Cadastrar Usuário", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_excluir_usuario = Botao.ConstroiBotao ("Excluir Usuário", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_cadastrar_sala = Botao.ConstroiBotao ("Cadastrar Sala", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, container_campos);
 		
 		botao_cadastrar_usuario.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
