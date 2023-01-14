@@ -66,6 +66,13 @@ public class CadastroUsuario {
 				}
 			}
 		});
+		
+		botao_voltar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.admin_main.getFrame().setVisible(true);
+			}
+		});
 	}
 	
 	
