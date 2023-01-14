@@ -40,7 +40,6 @@ public class Login extends JFrame {
 		
 		JPasswordField campo_senha = new JPasswordField("");
 		campo_senha.setBounds(0, 30, 100, 30);
-		//campo_senha.setHorizontalAlignment(JPasswordField.CENTER);
 		panel.add(campo_senha);
 		
 		
@@ -52,7 +51,18 @@ public class Login extends JFrame {
 		
 		botao_logar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
-				JOptionPane.showMessageDialog(null, campo_senha.getText());
+				if (campo_usuario.getText().equals("admin") && campo_senha.getText().equals("admin")) {
+					if (Globais.admin_main == null) {
+						Globais.admin_main  = new AdminMain();
+						getFrame().setVisible(false);
+						Globais.admin_main.getFrame().setVisible(true);
+					} else {
+						getFrame().setVisible(false);
+						Globais.admin_main.getFrame().setVisible(true);
+					}
+				} else {
+					
+				}
 			}
 		});
 	}
