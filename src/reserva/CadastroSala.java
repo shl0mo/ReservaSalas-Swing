@@ -1,6 +1,9 @@
 package reserva;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -34,7 +37,18 @@ public class CadastroSala extends JFrame {
 		JButton botao_voltar = Botao.ConstroiBotao("Voltar", 350, largura_janela, altura_janela, getFrame());
 		
 		getFrame().add(container_campos);
-
+		
+		botao_voltar.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				if (Globais.admin_main == null) {
+					Globais.admin_main = new AdminMenu();
+					Globais.admin_main.getFrame().setVisible(true);
+				} else {
+					Globais.admin_main.getFrame().setVisible(true);
+				}
+			}
+		});
 	}
 	
 	public JFrame getFrame () {
