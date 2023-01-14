@@ -1,7 +1,11 @@
 package reserva;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.*;
 import javax.swing.*;
+import java.io.*;
 
 import reserva.TextField;
 
@@ -34,7 +38,35 @@ public class CadastroUsuario {
 		
 		JButton botao_cadastrar = Botao.ConstroiBotao("Cadastrar", 370, largura_janela, altura_janela, getFrame());
 		
+		
+		botao_cadastrar.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String nome = campo_nome.getText();
+				String sobrenome = campo_sobrenome.getText();
+				String usuario = campo_usuario.getText();
+				String senha = campo_senha.getText();
+				String tipo = (String)campo_tipo.getSelectedItem();
+				if (nome.equals("") || sobrenome.equals("") || usuario.equals("") || senha.equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+					return;
+				}
+				try {
+					Statement statement = Globais.conn.createStatement();
+					ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios");
+					int id = 0;
+					while (resultado.next()) {
+						id = Integer.parseInt(resultado.getString(1));
+					}
+					id++;
+					statement.execute("INSERT INTO usuarios(id, nome, sobrenome, usuario, senha, tipo) VALUES('" + id + "', '" + nome + "', '" + sobrenome + "', '" + usuario + "', '" + senha + "', '" + tipo + "')");
+					JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
+				} catch (Exception ioe) {
+					ioe.printStackTrace();
+				}
+			}
+		});
 	}
+	
 	
 	public JFrame getFrame () {
 		return this.frame;
