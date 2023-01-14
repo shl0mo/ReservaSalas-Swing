@@ -55,9 +55,7 @@ public class CadastroUsuario {
 					Statement statement = Globais.conn.createStatement();
 					ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios");
 					int id = 0;
-					while (resultado.next()) {
-						id = Integer.parseInt(resultado.getString(1));
-					}
+					while (resultado.next()) id = Integer.parseInt(resultado.getString(1));
 					id++;
 					statement.execute("INSERT INTO usuarios(id, nome, sobrenome, usuario, senha, tipo) VALUES('" + id + "', '" + nome + "', '" + sobrenome + "', '" + usuario + "', '" + senha + "', '" + tipo + "')");
 					JOptionPane.showMessageDialog(null, "Usuário cadastrado com sucesso");
