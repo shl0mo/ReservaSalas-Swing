@@ -16,11 +16,11 @@ public class CadastroUsuario {
 		final int largura_janela = 400;
 		final int altura_janela = 550;
 		
-		this.frame = new JFrame("Cadastro de usuário");
+		this.frame = new JFrame("Cadastro de Usuário");
 		getFrame().setLayout(null);
 		getFrame().setSize(largura_janela, altura_janela);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Titulo.adicionaTitulo("Cadastro de Usuários", getFrame());
+		Titulo.adicionaTitulo("Cadastro de Usuário", getFrame());
 		
 		JPanel container_campos = new JPanel();
 		container_campos.setLayout(new GridLayout(5, 1, 0, 10));

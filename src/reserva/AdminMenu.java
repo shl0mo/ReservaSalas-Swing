@@ -55,6 +55,18 @@ public class AdminMenu extends JFrame {
 				Globais.login.getFrame().setVisible(true);
 			}
 		});
+		
+		botao_excluir_usuario.addActionListener (new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				Globais.admin_main.getFrame().setVisible(false);
+				if (Globais.exclusao_usuario == null) {
+					Globais.exclusao_usuario = new ExclusaoUsuario();
+					Globais.exclusao_usuario.getFrame().setVisible(true);	
+				} else {
+					Globais.exclusao_usuario.getFrame().setVisible(true);
+				}
+			}
+		});
 	}
 	
 	public JFrame getFrame () {
