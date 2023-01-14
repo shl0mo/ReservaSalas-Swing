@@ -8,14 +8,14 @@ import javax.swing.*;
 import java.sql.*;
 
 
-public class AdminMain extends JFrame {
+public class AdminMenu extends JFrame {
 	private JFrame frame;
 	
-	public AdminMain () {
+	public AdminMenu () {
 		final int largura_janela = 400;
 		final int altura_janela = 400;
 		
-		this.frame = new JFrame("Admin Main");
+		this.frame = new JFrame("Menu");
 		getFrame().setLayout(new GridLayout(2, 1));
 		getFrame().setSize(largura_janela, altura_janela);
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -31,6 +31,18 @@ public class AdminMain extends JFrame {
 		JButton botao_cadastrar_sala = Botao.ConstroiBotao ("Cadastrar Sala", 0, largura_janela, altura_janela, panel);
 		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, panel);
 		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, panel);
+		
+		botao_cadastrar_usuario.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				if (Globais.cadastro_usuario == null) {
+					Globais.cadastro_usuario = new CadastroUsuario();
+					Globais.cadastro_usuario.getFrame().setVisible(true);
+				} else {
+					Globais.cadastro_usuario.getFrame().setVisible(true);
+				}
+			}
+		});
 		
 		botao_sair.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {

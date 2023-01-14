@@ -9,7 +9,7 @@ public class Login extends JFrame {
 	
 	public Login () {
 		final int largura_janela = 400;
-		final int altura_janela = 500;
+		final int altura_janela = 300;
 				
 		this.frame = new JFrame("Login");
 		getFrame().setLayout(null);
@@ -17,43 +17,36 @@ public class Login extends JFrame {
 		getFrame().setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		Titulo.adicionaTitulo(getFrame());
 		
-		JPanel panel = new JPanel();
-		panel.setLayout(new GridLayout(2,2));
-		panel.setBounds(50, 70, 300, 100);
-		panel.setBackground(Color.RED);
+		JPanel container_campos = new JPanel();
+		container_campos.setLayout(new GridLayout(2,1));
+		container_campos.setBounds(50, 70, 300, 100);
 		
-		JLabel label_usuario = new JLabel("Usuário");
-		label_usuario.setBounds(0, 30, 400, 20);
-		label_usuario.setHorizontalAlignment(SwingConstants.CENTER);
-		label_usuario.setFont(new Font("Dialog", Font.BOLD, 16));
-		panel.add(label_usuario);
+		JTextField campo_usuario = TextField.ConstroiTextField("Usuário", container_campos);
 		
-		JTextField campo_usuario = new JTextField();
-		campo_usuario.setBounds(70, 20, 100, 30);
-		panel.add(campo_usuario);
 		
-		JLabel label_senha = new JLabel("Senha");
+		
+		/*JLabel label_senha = new JLabel("Senha");
 		label_senha.setBounds(0, 30, 400, 20);
 		label_senha.setHorizontalAlignment(SwingConstants.CENTER);
 		label_senha.setFont(new Font("Dialog", Font.BOLD, 16));
-		panel.add(label_senha);
+		container_campos.add(label_senha);
 		
 		JPasswordField campo_senha = new JPasswordField("");
 		campo_senha.setBounds(0, 30, 100, 30);
-		panel.add(campo_senha);
+		container_campos.add(campo_senha);*/
 		
 		
-		JButton botao_logar = Botao.ConstroiBotao("Botão Login", 200, largura_janela, altura_janela, frame);
+		JButton botao_logar = Botao.ConstroiBotao("Botão Login", 180, largura_janela, altura_janela, frame);
 		
-		panel.setVisible(true);
+		container_campos.setVisible(true);
 		
-		this.frame.add(panel);
+		this.frame.add(container_campos);
 		
 		botao_logar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				if (campo_usuario.getText().equals("admin") && campo_senha.getText().equals("admin")) {
 					if (Globais.admin_main == null) {
-						Globais.admin_main  = new AdminMain();
+						Globais.admin_main  = new AdminMenu();
 						getFrame().setVisible(false);
 						Globais.admin_main.getFrame().setVisible(true);
 					} else {
