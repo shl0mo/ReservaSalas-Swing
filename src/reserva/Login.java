@@ -43,16 +43,9 @@ public class Login extends JFrame {
 		//campo_senha.setHorizontalAlignment(JPasswordField.CENTER);
 		panel.add(campo_senha);
 		
-		JPanel container_botao = new JPanel();
-		container_botao.setLayout(new GridLayout());
-		container_botao.setBounds(largura_janela/4, 200, largura_janela/2, 40);
-		container_botao.setBackground(Color.BLUE);
 		
-		getFrame().add(container_botao);
+		JButton botao_logar = Botao.ConstroiBotao("Botão Login", 200, largura_janela, altura_janela, frame);
 		
-		JButton botao_logar = new JButton("Logar");
-		botao_logar.setBounds(0, 0, 130, 40);
-		container_botao.add(botao_logar, BorderLayout.CENTER);
 		panel.setVisible(true);
 		
 		this.frame.add(panel);
