@@ -42,6 +42,30 @@ public class ExclusaoUsuario {
 				Globais.admin_main.getFrame().setVisible(true);
 			}
 		});
+		
+		botao_excluir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String nome_usuario = campo_usuario.getText();
+				if (nome_usuario.equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+					return;
+				}
+				try {
+					Statement statement = Globais.conn.createStatement();
+					ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + nome_usuario + "'");
+					int numero_linhas = 0;
+					while (resultado.next()) numero_linhas++;
+					if (numero_linhas == 0) {
+						JOptionPane.showMessageDialog(null, "Não foi possível excluir. Usuário não cadastrado");
+						return;
+					}
+					statement.execute("DELETE FROM usuarios WHERE usuario = '" + nome_usuario + "'");
+					JOptionPane.showMessageDialog(null, "Usuário excluído com sucesso");
+				} catch (Exception ioe) {
+					ioe.printStackTrace();
+				}
+			}
+		});
 	}
 	
 	public JFrame getFrame () {
