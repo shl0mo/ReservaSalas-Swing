@@ -62,8 +62,8 @@ public class MenuAdmin extends JFrame {
 		alterar_usuario.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				getFrame().setVisible(false);
-				Globais.alterar_usuario_id = new AlterarUsuarioID();
-				Globais.alterar_usuario_id.getFrame().setVisible(true);
+				Globais.selecionar_id_usuario = new SelecionarIDUsuario();
+				Globais.selecionar_id_usuario.getFrame().setVisible(true);
 			}
 		});
 		

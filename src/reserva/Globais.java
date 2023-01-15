@@ -14,10 +14,11 @@ public class Globais {
 	public static ReservarSala reservar_sala = null;
 	public static ConsultarSalas consultar_salas = null;
 	public static ConsultarUsuarios consultar_usuarios = null;
-	public static AlterarUsuarioID alterar_usuario_id = null;
+	public static SelecionarIDUsuario selecionar_id_usuario = null;]
+	public static AlterarUsuario alterar_usuario = null;
 	public static int id_usuario = 0;
 	public static String usuario = "";
-	public static int id_alterar_usuario = 0;
-	public static int id_alterar_sala = 0;
+	public static String id_alterar_usuario = "";
+	public static String id_alterar_sala = "";
 }
 
