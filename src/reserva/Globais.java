@@ -11,6 +11,7 @@ public class Globais {
 	public static CadastroSala cadastro_sala = null;
 	public static ExclusaoSala exclusao_sala = null;
 	public static MenuUsuario menu_usuario = null;
+	public static ReservarSala reservar_sala = null;
 	public static int id_usuario = 0;
 	public static String usuario = "";
 }

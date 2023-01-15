@@ -24,6 +24,14 @@ public class MenuUsuario extends JFrame {
 		JButton botao_consultar = Botao.ConstroiBotao("Consultar Salas", 130, largura_janela, altura_janela, getFrame());
 		JButton botao_sair = Botao.ConstroiBotao("Sair", 190, largura_janela, altura_janela, getFrame());
 		
+		botao_reservar.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.reservar_sala = new ReservarSala();
+				Globais.reservar_sala.getFrame().setVisible(true);
+			}
+		});
+		
 		botao_sair.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				Globais.id_usuario = 0;
