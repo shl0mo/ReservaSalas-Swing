@@ -41,6 +41,8 @@ public class Login extends JFrame {
 					return;
 				}
 				if (usuario.equals("admin") && senha.equals("admin")) {
+					Globais.id_usuario = 0;
+					Globais.usuario = "admin";
 					if (Globais.admin_main == null) {
 						Globais.admin_main  = new MenuAdmin();
 						getFrame().setVisible(false);
