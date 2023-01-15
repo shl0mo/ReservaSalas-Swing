@@ -42,7 +42,7 @@ public class ExclusaoSala {
 		botao_voltar.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				getFrame().setVisible(false);
-				Globais.admin_main = new AdminMenu();
+				Globais.admin_main = new MenuAdmin();
 				Globais.admin_main.getFrame().setVisible(true);
 			}
 		});

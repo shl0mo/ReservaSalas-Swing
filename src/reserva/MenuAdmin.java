@@ -9,10 +9,10 @@ import java.sql.*;
 
 import reserva.CadastroSala;
 
-public class AdminMenu extends JFrame {
+public class MenuAdmin extends JFrame {
 	private JFrame frame;
 	
-	public AdminMenu () {
+	public MenuAdmin () {
 		final int largura_janela = 400;
 		final int altura_janela = 400;
 		
@@ -49,7 +49,7 @@ public class AdminMenu extends JFrame {
 		botao_sair.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				Globais.id_usuario = 0;
-				Globais.nome_usuario = "";
+				Globais.usuario = "";
 				getFrame().setVisible(false);
 				Globais.admin_main = null;
 				Globais.login = new Login();

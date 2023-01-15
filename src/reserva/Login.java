@@ -42,7 +42,7 @@ public class Login extends JFrame {
 				}
 				if (usuario.equals("admin") && senha.equals("admin")) {
 					if (Globais.admin_main == null) {
-						Globais.admin_main  = new AdminMenu();
+						Globais.admin_main  = new MenuAdmin();
 						getFrame().setVisible(false);
 						Globais.admin_main.getFrame().setVisible(true);
 					} else {
@@ -53,13 +53,21 @@ public class Login extends JFrame {
 					try {
 						Statement statement = Globais.conn.createStatement();
 						ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario + "'" + " AND senha = '" + senha + "';");
+						int id = 0;
 						int numero_linhas = 0;
-						while (resultado.next()) numero_linhas++;
+						while (resultado.next()) {
+							id = Integer.parseInt(resultado.getString(1));
+							numero_linhas++;
+						}
 						if (numero_linhas == 0) {
 							JOptionPane.showMessageDialog(null, "Usuário ou senha inválidos");
 							return;
 						}
-						JOptionPane.showMessageDialog(null, "Redirecionando...");
+						Globais.id_usuario = id;
+						Globais.usuario = usuario;
+						getFrame().setVisible(false);
+						Globais.menu_usuario = new MenuUsuario();
+						Globais.menu_usuario.getFrame().setVisible(true);
 					} catch (Exception ioe) {
 						ioe.printStackTrace();
 					}

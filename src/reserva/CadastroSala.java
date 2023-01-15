@@ -74,7 +74,7 @@ public class CadastroSala extends JFrame {
 			public void actionPerformed (ActionEvent e) {
 				getFrame().setVisible(false);
 				if (Globais.admin_main == null) {
-					Globais.admin_main = new AdminMenu();
+					Globais.admin_main = new MenuAdmin();
 					Globais.admin_main.getFrame().setVisible(true);
 				} else {
 					Globais.admin_main.getFrame().setVisible(true);
