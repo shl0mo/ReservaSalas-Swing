@@ -70,6 +70,10 @@ public class AlterarUsuario {
 				String usuario = campo_usuario.getText();
 				String senha = campo_senha.getText();
 				String tipo = (String)campo_tipo.getSelectedItem();
+				if (nome.equals("") || sobrenome.equals("") || usuario.equals("") || senha.equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+					return;
+				}
 				try {
 					Statement statement = Globais.conn.createStatement();
 					statement.execute("UPDATE usuarios SET nome = '" + nome +"', sobrenome = '" + sobrenome + "', usuario = '" + usuario + "', tipo = '" + tipo + "', senha = '" + senha + "' WHERE id = " + Globais.id_alterar_usuario);

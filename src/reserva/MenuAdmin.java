@@ -34,7 +34,7 @@ public class MenuAdmin extends JFrame {
 		JButton botao_excluir_usuario = Botao.ConstroiBotao ("Excluir Usuário", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_cadastrar_sala = Botao.ConstroiBotao ("Cadastrar Sala", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_consultar_salas = Botao.ConstroiBotao ("Consultar Salas", 0, largura_janela, altura_janela, container_campos);
-		JButton alterar_sala = Botao.ConstroiBotao ("Alterar Sala", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_alterar_sala = Botao.ConstroiBotao ("Alterar Sala", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, container_campos);
 		JButton gerar_relatorio = Botao.ConstroiBotao ("Gerar Relatório", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, container_campos);
@@ -103,6 +103,14 @@ public class MenuAdmin extends JFrame {
 				getFrame().setVisible(false);
 				Globais.consultar_salas = new ConsultarSalas();
 				Globais.consultar_salas.getFrame().setVisible(true);
+			}
+		});
+		
+		botao_alterar_sala.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.selecionar_id_sala = new SelecionarIDSala();
+				Globais.selecionar_id_sala.getFrame().setVisible(true);
 			}
 		});
 		
