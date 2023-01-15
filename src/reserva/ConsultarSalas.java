@@ -65,7 +65,11 @@ public class ConsultarSalas {
 		botao_voltar.addActionListener (new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				getFrame().setVisible(false);
-				Globais.menu_usuario.getFrame().setVisible(true);
+				if (Globais.usuario.equals("admin")) {
+					Globais.admin_main.getFrame().setVisible(true);
+				} else {
+					Globais.menu_usuario.getFrame().setVisible(true);
+				}
 			}
 		});
 	}

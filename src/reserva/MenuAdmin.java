@@ -14,7 +14,7 @@ public class MenuAdmin extends JFrame {
 	
 	public MenuAdmin () {
 		final int largura_janela = 400;
-		final int altura_janela = 400;
+		final int altura_janela = 600;
 		
 		this.frame = new JFrame("Menu");
 		getFrame().setLayout(null);
@@ -23,14 +23,15 @@ public class MenuAdmin extends JFrame {
 		Titulo.adicionaTitulo("Menu do Administrador", getFrame());
 		
 		JPanel container_campos = new JPanel();
-		container_campos.setLayout(new GridLayout(5, 1, 0, 10));
-		container_campos.setBounds(0, 80, largura_janela, 250);
+		container_campos.setLayout(new GridLayout(6, 1, 0, 10));
+		container_campos.setBounds(0, 80, largura_janela, altura_janela - 200);
 		container_campos.setBorder(BorderFactory.createEmptyBorder(0, 70, 0, 70));
 		getFrame().add(container_campos);
 		
 		JButton botao_cadastrar_usuario = Botao.ConstroiBotao ("Cadastrar Usuário", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_excluir_usuario = Botao.ConstroiBotao ("Excluir Usuário", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_cadastrar_sala = Botao.ConstroiBotao ("Cadastrar Sala", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_consultar_sala = Botao.ConstroiBotao ("Consultar Salas", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, container_campos);
 		
@@ -74,6 +75,14 @@ public class MenuAdmin extends JFrame {
 				getFrame().setVisible(false);
 				Globais.cadastro_sala = new CadastroSala();
 				Globais.cadastro_sala.getFrame().setVisible(true);
+			}
+		});
+		
+		botao_consultar_sala.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.consultar_salas = new ConsultarSalas();
+				Globais.consultar_salas.getFrame().setVisible(true);
 			}
 		});
 		
