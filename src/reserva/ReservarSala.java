@@ -13,7 +13,7 @@ public class ReservarSala extends JFrame {
 	
 	public ReservarSala  () {
 		final int largura_janela = 400;
-		final int altura_janela = 470;
+		final int altura_janela = 550;
 		
 		this.frame = new JFrame("Reserva de Sala");
 		this.frame.setLayout(null);
@@ -32,9 +32,10 @@ public class ReservarSala extends JFrame {
 		JTextField andar_sala = TextField.ConstroiTextField("Andar", container_campos);
 		String[] tipos_salas = {"Sala de Reunião", "Auditório", "Labotoratório de Graduação"};
 		JComboBox tipo_sala = ComboBox.ConstroiComboBox("Tipo", tipos_salas, container_campos);
+		JTextField campo_data = TextField.ConstroiTextField("Data", container_campos);
 		
-		JButton botao_reservar = Botao.ConstroiBotao("Reservar", 300, largura_janela, altura_janela, getFrame());
-		JButton botao_voltar = Botao.ConstroiBotao("Voltar", 350, largura_janela, altura_janela, getFrame());
+		JButton botao_reservar = Botao.ConstroiBotao("Reservar", 360, largura_janela, altura_janela, getFrame());
+		JButton botao_voltar = Botao.ConstroiBotao("Voltar", 410, largura_janela, altura_janela, getFrame());
 		
 		getFrame().add(container_campos);
 		
@@ -45,29 +46,29 @@ public class ReservarSala extends JFrame {
 				String bloco = bloco_sala.getText();
 				String andar = andar_sala.getText();
 				String tipo = (String)tipo_sala.getSelectedItem();
-				String data = "16/01/2023";
+				String data = campo_data.getText();
 				try {
 					Statement statement = Globais.conn.createStatement();
 					ResultSet resultado = statement.executeQuery("SELECT * FROM salas WHERE numero = '" + numero + "' AND bloco = '" + bloco + "' AND andar = '" + andar + "' AND tipo = '" + tipo + "';");
 					int quantidade_linhas = 0;
-					String sala_disponivel = "";
 					while (resultado.next()) {
 						quantidade_linhas++;
-						sala_disponivel = resultado.getString(6);
 					}
 					if (quantidade_linhas == 0) {
 						JOptionPane.showMessageDialog(null, "A sala solicitada não existe");
 						return;
 					}
-					if (sala_disponivel.equals("0")) {
-						JOptionPane.showMessageDialog(null, "A sala solicitada não está disponível");
-						return;
-					}
 					resultado = statement.executeQuery("SELECT * FROM salas WHERE numero = '" + numero + "' AND bloco = '" + bloco + "' AND andar = '" + andar + "' AND tipo = '" + tipo + "';");
 					String id_sala = "";
 					while (resultado.next()) id_sala = resultado.getString(1);
+					resultado = statement.executeQuery("SELECT * FROM reservas WHERE id_sala = " + id_sala);
+					while (resultado.next()) {
+						if (resultado.getString(3).equals(data)) {
+							JOptionPane.showMessageDialog(null, "A sala não está disponível na data solicitada");
+							return;
+						}
+					}
 					statement.execute("INSERT INTO reservas(id_usuario, id_sala, data) VALUES('" + id_usuario + "', '" + id_sala + "', '" + data + "');");
-					statement.execute("UPDATE salas SET disponivel = 0 WHERE id = '" + id_sala + "';");
 					JOptionPane.showMessageDialog(null, "Reserva realizada com sucesso");
 				} catch (Exception ioe) {
 					ioe.printStackTrace();

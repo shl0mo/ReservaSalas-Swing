@@ -18,11 +18,7 @@ public class ConsultarSalas {
 		this.frame.setLayout(null);
 		this.frame.setBounds(0, 0, largura_janela, altura_janela);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		if (Globais.usuario.equals("admin")) {
-			Titulo.adicionaTitulo("Consulta de Salas", largura_janela, frame);
-		} else {
-			Titulo.adicionaTitulo("Salas Disponíveis", largura_janela, frame);
-		}
+		Titulo.adicionaTitulo("Consulta de Salas", largura_janela, frame);
 		
 		JPanel container_tabela = new JPanel();
 		container_tabela.setLayout(new GridLayout(1, 1));
@@ -32,19 +28,11 @@ public class ConsultarSalas {
 			
 			Statement statement = Globais.conn.createStatement();
 			ResultSet resultado = null;
-			if (Globais.usuario.equals("admin")) {
-				resultado = statement.executeQuery("SELECT * FROM salas");
-			} else {
-				resultado = statement.executeQuery("SELECT * FROM salas WHERE disponivel = 1");
-			}
+			resultado = statement.executeQuery("SELECT * FROM salas");
 			int quantidade_linhas = 0;
 			while (resultado.next()) quantidade_linhas++;
 			String[][] dados = new String[quantidade_linhas][5];
-			if (Globais.usuario.equals("admin")) {
-				resultado = statement.executeQuery("SELECT * FROM salas");
-			} else {
-				resultado = statement.executeQuery("SELECT * FROM salas WHERE disponivel = 1");
-			}
+			resultado = statement.executeQuery("SELECT * FROM salas");
 			int i = 0;
 			while (resultado.next()) {
 				for (int j = 0; j < 5; j++) {
