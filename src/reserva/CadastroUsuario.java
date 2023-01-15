@@ -53,7 +53,21 @@ public class CadastroUsuario {
 				}
 				try {
 					Statement statement = Globais.conn.createStatement();
-					ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios");
+					ResultSet resultado = statement.executeQuery("SELECT * FROM usuarios WHERE usuario = '" + usuario + "';");
+					int quantidade_linhas = 0;
+					while (resultado.next()) quantidade_linhas++;
+					if (quantidade_linhas > 0) {
+						JOptionPane.showMessageDialog(null, "Nome de usuário já cadastrado. Escolha outro");
+						return;
+					}
+					resultado = statement.executeQuery("SELECT * FROM usuarios WHERE nome = '" + nome +"' AND sobrenome = '" + sobrenome + "' AND usuario = '" + usuario + "' AND senha = '" + senha + "' AND tipo = '" + tipo + "'");
+					quantidade_linhas = 0;
+					while (resultado.next()) quantidade_linhas++;
+					if (quantidade_linhas > 0) {
+						JOptionPane.showMessageDialog(null, "Não foi possível realizar o cadastro. Usuário já cadastrado");
+						return;
+					}
+					resultado = statement.executeQuery("SELECT * FROM usuarios");
 					int id = 0;
 					while (resultado.next()) id = Integer.parseInt(resultado.getString(1));
 					id++;

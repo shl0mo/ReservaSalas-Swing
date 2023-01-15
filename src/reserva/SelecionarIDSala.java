@@ -37,6 +37,10 @@ public class SelecionarIDSala extends JFrame {
 		botao_selecionar_id.addActionListener(new ActionListener () {
 			public void actionPerformed (ActionEvent e) {
 				String id_campo = id_sala.getText();
+				if (id_campo.equals("")) {
+					JOptionPane.showMessageDialog(null, "Preencha todos os campos");
+					return;
+				}
 				try {
 					Statement statement = Globais.conn.createStatement();
 					ResultSet resultado = statement.executeQuery("SELECT * FROM salas WHERE id = " + id_campo);

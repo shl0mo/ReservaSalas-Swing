@@ -61,7 +61,7 @@ public class CadastroSala extends JFrame {
 					int id = 0;
 					while (resultado.next()) id = Integer.parseInt(resultado.getString(1));
 					id++;
-					statement.execute("INSERT INTO salas(id, numero, bloco, andar, tipo, disponivel) VALUES('" + id + "','" + numero + "', '" + bloco + "', '" + andar + "', '" + tipo + "', '" + 1 + "')");
+					statement.execute("INSERT INTO salas(id, numero, bloco, andar, tipo) VALUES('" + id + "','" + numero + "', '" + bloco + "', '" + andar + "', '" + tipo + "')");
 					JOptionPane.showMessageDialog(null, "Sala cadastrada com sucesso");
 				} catch (Exception ioe) {
 					ioe.printStackTrace();
