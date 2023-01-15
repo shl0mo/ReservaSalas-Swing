@@ -1,6 +1,9 @@
 package reserva;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -21,6 +24,15 @@ public class MenuUsuario extends JFrame {
 		JButton botao_consultar = Botao.ConstroiBotao("Consultar Salas", 130, largura_janela, altura_janela, getFrame());
 		JButton botao_sair = Botao.ConstroiBotao("Sair", 190, largura_janela, altura_janela, getFrame());
 		
+		botao_sair.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				Globais.id_usuario = 0;
+				Globais.usuario = "";
+				getFrame().setVisible(false);
+				Globais.login = new Login();
+				Globais.login.getFrame().setVisible(true);
+			}
+		});
 	}
 	
 	public JFrame getFrame() {
