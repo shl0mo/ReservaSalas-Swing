@@ -44,7 +44,29 @@ public class ExclusaoSala {
 				getFrame().setVisible(false);
 				Globais.admin_main = new AdminMenu();
 				Globais.admin_main.getFrame().setVisible(true);
-				
+			}
+		});
+		
+		botao_excluir.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				String numero = numero_sala.getText();
+				String bloco = bloco_sala.getText();
+				String andar = andar_sala.getText();
+				String tipo = (String)tipo_sala.getSelectedItem();
+				try {
+					Statement statement = Globais.conn.createStatement();
+					ResultSet resultado = statement.executeQuery("SELECT * FROM salas WHERE numero = '" + numero + "' AND bloco = '" + bloco + "' AND andar = '" + andar + "' AND tipo = '" + tipo + "'");
+					int quantidade_linhas = 0;
+					while (resultado.next()) quantidade_linhas++;
+					if (quantidade_linhas == 0) {
+						JOptionPane.showMessageDialog(null, "Não é possível realizar a exclusão. A sala solicitada não existe");
+						return;
+					}
+					statement.execute("DELETE FROM salas WHERE numero = '" + numero + "' AND bloco = '" + bloco + "' AND andar = '" + andar +  "' AND tipo = '" + tipo +  "';");
+					JOptionPane.showMessageDialog(null, "Sala excluida com sucesso");
+				} catch (Exception ioe) {
+					ioe.printStackTrace();
+				}
 			}
 		});
 		
