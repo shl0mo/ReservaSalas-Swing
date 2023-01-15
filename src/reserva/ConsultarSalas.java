@@ -1,6 +1,9 @@
 package reserva;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -15,7 +18,11 @@ public class ConsultarSalas {
 		this.frame.setLayout(null);
 		this.frame.setBounds(0, 0, largura_janela, altura_janela);
 		this.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Titulo.adicionaTitulo("Consulta de Salas", largura_janela, frame);
+		if (Globais.usuario.equals("admin")) {
+			Titulo.adicionaTitulo("Consulta de Salas", largura_janela, frame);
+		} else {
+			Titulo.adicionaTitulo("Salas Disponíveis", largura_janela, frame);
+		}
 		
 		JPanel container_tabela = new JPanel();
 		container_tabela.setLayout(new GridLayout(1, 1));
@@ -52,9 +59,15 @@ public class ConsultarSalas {
 			ioe.printStackTrace();
 		}
 		
-		
 		getFrame().add(container_tabela);
 		JButton botao_voltar = Botao.ConstroiBotao("Voltar", altura_janela - 105, largura_janela, altura_janela, frame);
+		
+		botao_voltar.addActionListener (new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.menu_usuario.getFrame().setVisible(true);
+			}
+		});
 	}
 	
 	public JFrame getFrame() {
