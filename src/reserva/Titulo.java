@@ -11,4 +11,12 @@ public class Titulo {
 		titulo.setFont(new Font("Dialog", Font.BOLD, 16));
 		janela.add(titulo);
 	}
+	
+	public static void adicionaTitulo (String conteudo_titulo, int largura_janela, JFrame janela) {
+		JLabel titulo = new JLabel(conteudo_titulo);
+		titulo.setBounds(largura_janela/2 - 200, 30, 400, 20);
+		titulo.setHorizontalAlignment(SwingConstants.CENTER);
+		titulo.setFont(new Font("Dialog", Font.BOLD, 16));
+		janela.add(titulo);
+	}
 }

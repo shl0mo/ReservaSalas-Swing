@@ -32,6 +32,14 @@ public class MenuUsuario extends JFrame {
 			}
 		});
 		
+		botao_consultar.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.consultar_salas = new ConsultarSalas();
+				Globais.consultar_salas.getFrame().setVisible(true);
+			}
+		});
+		
 		botao_sair.addActionListener(new ActionListener() {
 			public void actionPerformed (ActionEvent e) {
 				Globais.id_usuario = 0;
