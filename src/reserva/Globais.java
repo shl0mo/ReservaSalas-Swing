@@ -18,6 +18,7 @@ public class Globais {
 	public static AlterarUsuario alterar_usuario = null;
 	public static SelecionarIDSala selecionar_id_sala = null;
 	public static AlterarSala alterar_sala = null;
+	public static Relatorio relatorio = null;
 	public static int id_usuario = 0;
 	public static String usuario = "";
 	public static String id_alterar_usuario = "";

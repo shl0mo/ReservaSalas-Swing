@@ -36,7 +36,7 @@ public class MenuAdmin extends JFrame {
 		JButton botao_consultar_salas = Botao.ConstroiBotao ("Consultar Salas", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_alterar_sala = Botao.ConstroiBotao ("Alterar Sala", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_excluir_sala = Botao.ConstroiBotao ("Excluir Sala", 0, largura_janela, altura_janela, container_campos);
-		JButton gerar_relatorio = Botao.ConstroiBotao ("Gerar Relatório", 0, largura_janela, altura_janela, container_campos);
+		JButton botao_gerar_relatorio = Botao.ConstroiBotao ("Gerar Relatório", 0, largura_janela, altura_janela, container_campos);
 		JButton botao_sair = Botao.ConstroiBotao ("Sair", 0, largura_janela, altura_janela, container_campos);
 		
 		botao_cadastrar_usuario.addActionListener(new ActionListener() {
@@ -119,6 +119,14 @@ public class MenuAdmin extends JFrame {
 				getFrame().setVisible(false);
 				Globais.exclusao_sala = new ExclusaoSala();
 				Globais.exclusao_sala.getFrame().setVisible(true);
+			}
+		});
+		
+		botao_gerar_relatorio.addActionListener(new ActionListener() {
+			public void actionPerformed (ActionEvent e) {
+				getFrame().setVisible(false);
+				Globais.relatorio = new Relatorio();
+				Globais.relatorio.getFrame().setVisible(true);
 			}
 		});
 	}
